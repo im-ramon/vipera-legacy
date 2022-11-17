@@ -1,3 +1,4 @@
+
 export default function Main() {
     return (
         <main className="bg-slate-500 p-2 h-full">

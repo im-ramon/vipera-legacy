@@ -4,6 +4,8 @@ import { BiHomeAlt, BiMap, BiNotepad, BiStats, BiUserPlus, BiUserMinus, BiUserX,
 import { useState } from 'react';
 import { GiHamburgerMenu } from "react-icons/gi";
 import { GrClose } from "react-icons/gr";
+import AsideLinks from './_parts/AsideLinks';
+import RegistrarChegada from '../pages/RegistrarChegada';
 
 export default function Aside() {
     const [showAside, setShowAside] = useState<boolean>(true)
@@ -26,51 +28,31 @@ export default function Aside() {
                             <div className="text-sm font-light tracking-wide text-gray-500">Menu</div>
                         </div>
                     </li>
-                    <li>
-                        <a href="#" className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-primary pr-6">
-                            <span className="inline-flex justify-center items-center ml-4">
-                                <BiHomeAlt size={20} />
-                            </span>
-                            <span className="ml-2 text-sm tracking-wide truncate">Dashboard</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-primary pr-6">
-                            <span className="inline-flex justify-center items-center ml-4">
-                                <BiMap size={20} />
-                            </span>
-                            <span className="ml-2 text-sm tracking-wide truncate">Mapa</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-primary pr-6">
-                            <span className="inline-flex justify-center items-center ml-4">
-                                <BiNotepad size={20} />
-                            </span>
-                            <span className="ml-2 text-sm tracking-wide truncate">Instruções</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-primary pr-6">
-                            <span className="inline-flex justify-center items-center ml-4">
-                                <BiStats size={20} />
-                            </span>
-                            <span className="ml-2 text-sm tracking-wide truncate">Estatísticas</span>
-                        </a>
-                    </li>
+
+                    <AsideLinks title='Dashboard'>
+                        <BiHomeAlt size={20} />
+                    </AsideLinks>
+
+                    <AsideLinks title='Mapa'>
+                        <BiMap size={20} />
+                    </AsideLinks>
+
+                    <AsideLinks title='Instruções'>
+                        <BiNotepad size={20} />
+                    </AsideLinks>
+
+                    <AsideLinks title='Estatísticas'>
+                        <BiStats size={20} />
+                    </AsideLinks>
+
                     <li className="px-5 bg-gray-50">
                         <div className="flex flex-row items-center h-8">
                             <div className="text-sm font-light tracking-wide text-gray-500">Visitantes</div>
                         </div>
                     </li>
-                    <li>
-                        <a href="#" className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-primary pr-6">
-                            <span className="inline-flex justify-center items-center ml-4">
-                                <BiUserPlus size={20} />
-                            </span>
-                            <span className="ml-2 text-sm tracking-wide truncate">Registrar chegada</span>
-                        </a>
-                    </li>
+
+                    <RegistrarChegada />
+
                     <li>
                         <a href="#" className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-primary pr-6">
                             <span className="inline-flex justify-center items-center ml-4">
