@@ -1,18 +1,22 @@
 import { Box, Button, Collapse, Image, useDisclosure } from '@chakra-ui/react'
 import logo from '../assets/images/img/logo.png'
 import { BiHomeAlt, BiMap, BiNotepad, BiStats, BiUserPlus, BiUserMinus, BiUserX, BiListUl, BiLogOutCircle } from "react-icons/bi";
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { GiHamburgerMenu } from "react-icons/gi";
 import { GrClose } from "react-icons/gr";
 import AsideLinks from './_parts/AsideLinks';
 import RegistrarChegada from '../pages/RegistrarChegada';
+import RegistrarSaida from '../pages/RegistrarSaida';
+import { NavLink, Route, Routes } from 'react-router-dom';
+import Home from './Home';
+import Dashboard from './Dashboard';
 
 export default function Aside() {
     const [showAside, setShowAside] = useState<boolean>(true)
 
     return (
-        <aside className={`flex flex-col  relative transition-all duration-300 bg-white h-full w-${showAside ? '96' : '0'} border-${showAside ? 'r' : 'none'}`}>
-            <div className='absolute top-4 right-0 translate-x-8 w-8 h-8 flex justify-center items-center bg-white cursor-pointer' onClick={() => setShowAside(!showAside)}>
+        <aside className={`flex flex-col relative transition-all duration-300 bg-white h-full ${showAside ? 'w-64 border-r' : 'w-0 border-none'}`}>
+            <div className='absolute top-3 right-0 translate-x-8 w-8 h-8 flex justify-center items-center bg-white cursor-pointer border border-l-0' onClick={() => setShowAside(!showAside)}>
                 {showAside ? <GrClose /> : <GiHamburgerMenu />}
             </div>
             <div className="flex items-center justify-center h-14 border-b overflow-hidden">
@@ -29,19 +33,19 @@ export default function Aside() {
                         </div>
                     </li>
 
-                    <AsideLinks title='Dashboard'>
+                    <AsideLinks to='dashboard' title='Dashboard'>
                         <BiHomeAlt size={20} />
                     </AsideLinks>
 
-                    <AsideLinks title='Mapa'>
+                    <AsideLinks to='mapa' title='Mapa'>
                         <BiMap size={20} />
                     </AsideLinks>
 
-                    <AsideLinks title='Instruções'>
+                    <AsideLinks to='instrucoes' title='Instruções'>
                         <BiNotepad size={20} />
                     </AsideLinks>
 
-                    <AsideLinks title='Estatísticas'>
+                    <AsideLinks to='estatisticas' title='Estatísticas'>
                         <BiStats size={20} />
                     </AsideLinks>
 
@@ -52,15 +56,8 @@ export default function Aside() {
                     </li>
 
                     <RegistrarChegada />
+                    <RegistrarSaida />
 
-                    <li>
-                        <a href="#" className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-primary pr-6">
-                            <span className="inline-flex justify-center items-center ml-4">
-                                <BiUserMinus size={20} />
-                            </span>
-                            <span className="ml-2 text-sm tracking-wide truncate">Registrar saída</span>
-                        </a>
-                    </li>
                     <li>
                         <a href="#" className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-primary pr-6">
                             <span className="inline-flex justify-center items-center ml-4">
