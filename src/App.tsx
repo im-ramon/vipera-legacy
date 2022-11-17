@@ -1,10 +1,12 @@
 import './styles/style.scss';
 import Aside from './components/Aside';
+import Main from './components/Main';
 
 function App() {
     return (
-        <div className="App">
+        <div id='container' className='flex h-screen'>
             <Aside />
+            <Main />
         </div>
     )
 }
