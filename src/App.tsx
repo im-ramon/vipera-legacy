@@ -1,14 +1,21 @@
-import { useContext } from 'react'
-import { AppContext } from './contexts/app.context';
-import { Login } from './pages/Login';
+import { useContext, useEffect } from 'react'
+import { AuthContext } from './contexts/auth.context';
+import { SignIn } from './pages/SignIn';
 import Router from './routes/routes';
 import './styles/style.scss';
+import { auth } from './services/firebase'
+import Loading from './components/Loading';
 
 function App() {
-    const { user } = useContext(AppContext)
+    const { user, isLoading } = useContext(AuthContext)
+
+    if (isLoading) {
+        return <Loading />
+    }
+
     return (
         <div id='container' className='flex h-screen justify-center'>
-            {user ? <Router /> : <Login />}
+            {user ? <Router /> : <SignIn />}
         </div>
     )
 }

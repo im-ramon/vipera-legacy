@@ -3,6 +3,7 @@ import React from "react";
 import { Badge, Box, Button, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerFooter, DrawerHeader, DrawerOverlay, FormLabel, Input, InputGroup, InputLeftAddon, InputRightAddon, Select, Stack, Textarea, useDisclosure } from "@chakra-ui/react";
 import AsideLinks from "../components/_parts/AsideLinks";
 import { BiUserPlus } from "react-icons/bi";
+import AsideLinksEmpty from "../components/_parts/AsideLinksEmpty";
 
 export default function RegistrarChegada() {
     const { isOpen, onOpen, onClose } = useDisclosure()
@@ -10,9 +11,9 @@ export default function RegistrarChegada() {
 
     return (
         <>
-            <AsideLinks to="/registar-chegada" title="Registrar chegada" onClick={onOpen}>
+            <AsideLinksEmpty title="Registrar chegada" onClick={onOpen}>
                 <BiUserPlus size={20} />
-            </AsideLinks>
+            </AsideLinksEmpty>
             <Drawer
                 isOpen={isOpen}
                 placement='right'

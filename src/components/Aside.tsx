@@ -1,18 +1,19 @@
-import { Box, Button, Collapse, Image, useDisclosure } from '@chakra-ui/react'
-import logo from '../assets/images/img/logo.png'
-import { BiHomeAlt, BiMap, BiNotepad, BiStats, BiUserPlus, BiUserMinus, BiUserX, BiListUl, BiLogOutCircle } from "react-icons/bi";
-import React, { useState } from 'react';
+import { useContext, useState } from 'react';
+import { AuthContext } from '../contexts/auth.context';
+
+import { Image } from '@chakra-ui/react'
+import { BiHomeAlt, BiMap, BiNotepad, BiStats, BiUserX, BiListUl, BiLogOutCircle } from "react-icons/bi";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { GrClose } from "react-icons/gr";
 import AsideLinks from './_parts/AsideLinks';
 import RegistrarChegada from '../pages/RegistrarChegada';
 import RegistrarSaida from '../pages/RegistrarSaida';
-import { NavLink, Route, Routes } from 'react-router-dom';
-import Home from './Home';
-import Dashboard from './Dashboard';
+import logo from '../assets/images/img/logo.png'
 
 export default function Aside() {
     const [showAside, setShowAside] = useState<boolean>(true)
+
+    const { signOut } = useContext(AuthContext)
 
     return (
         <aside className={`flex flex-col relative transition-all duration-300 bg-white h-full ${showAside ? 'w-64 border-r' : 'w-0 border-none'}`}>
@@ -33,7 +34,7 @@ export default function Aside() {
                         </div>
                     </li>
 
-                    <AsideLinks to='dashboard' title='Dashboard'>
+                    <AsideLinks to='' title='Dashboard'>
                         <BiHomeAlt size={20} />
                     </AsideLinks>
 
@@ -77,7 +78,7 @@ export default function Aside() {
                 </ul>
 
             </div>
-            <div className='mt-auto'>
+            <div className='mt-auto' onClick={() => { signOut() }}>
                 <a href="#" className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-danger pr-6">
                     <span className="inline-flex justify-center items-center ml-4">
                         <BiLogOutCircle />
