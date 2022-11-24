@@ -37,11 +37,11 @@ export function SignIn() {
                         </div>
                         <label htmlFor="remember" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Manter conectado</label>
                     </div>
-                    <a href="#" className="ml-auto text-sm text-primary hover:underline dark:text-blue-500">Esqueci a senha?</a>
+                    <a href="#" className="ml-auto text-sm text-primary-900 hover:underline dark:text-blue-500">Esqueci a senha?</a>
                 </div>
-                <button type="submit" className="w-full text-white bg-primary hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-primary dark:focus:ring-blue-800">Login to your account</button>
+                <button type="submit" className="w-full text-white bg-primary-900 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-primary-900 dark:focus:ring-blue-800">Login to your account</button>
                 <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
-                    Ainda tem conta? <a href="#" className="text-primary hover:underline dark:text-blue-500">Criar uma conta</a>
+                    Ainda tem conta? <a href="#" className="text-primary-900 hover:underline dark:text-blue-500">Criar uma conta</a>
                 </div>
             </form>
         </div>

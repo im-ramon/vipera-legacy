@@ -1,13 +1,9 @@
-#logo {
-    filter: invert(50%) sepia(55%) saturate(6570%) hue-rotate(124deg) brightness(99%) contrast(83%);
-}
-
 .active {
     position: relative;
 
     &::before {
         content: "•";
-        color: green;
+        color: #74bf04;
         font-size: 1.2rem;
         margin-top: auto;
         right: 1rem;

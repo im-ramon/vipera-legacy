@@ -17,7 +17,7 @@ export default function Aside() {
 
     return (
         <aside className={`flex flex-col relative transition-all duration-300 bg-white h-full ${showAside ? 'w-64 border-r' : 'w-0 border-none'}`}>
-            <div className='absolute top-3 right-0 translate-x-8 w-8 h-8 flex justify-center items-center bg-white cursor-pointer border border-l-0' onClick={() => setShowAside(!showAside)}>
+            <div className='absolute top-3 right-0 rounded-tr-md rounded-br-md translate-x-8 w-8 h-8 flex justify-center items-center bg-white cursor-pointer border border-l-0' onClick={() => setShowAside(!showAside)}>
                 {showAside ? <GrClose /> : <GiHamburgerMenu />}
             </div>
             <div className="flex items-center justify-center h-14 border-b overflow-hidden">
@@ -60,7 +60,7 @@ export default function Aside() {
                     <RegistrarSaida />
 
                     <li>
-                        <a href="#" className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-primary pr-6">
+                        <a href="#" className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-primary-900 pr-6">
                             <span className="inline-flex justify-center items-center ml-4">
                                 <BiUserX size={20} />
                             </span>
@@ -68,7 +68,7 @@ export default function Aside() {
                         </a>
                     </li>
                     <li>
-                        <a href="#" className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-primary pr-6">
+                        <a href="#" className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-primary-900 pr-6">
                             <span className="inline-flex justify-center items-center ml-4">
                                 <BiListUl size={20} />
                             </span>

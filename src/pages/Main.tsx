@@ -6,7 +6,7 @@ import Estatisticas from "./Estatisticas";
 
 export default function Main() {
     return (
-        <main className="bg-slate-400 py-8 px-8 h-full flex-1">
+        <main className="bg-white py-8 px-8 pl-12 h-full flex-1 overflow-y-scroll">
             <Routes>
                 <Route path="/" element={<Dashboard />} />
                 <Route path="/mapa" element={<Mapa />} />

@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import PageHeader from '../components/_parts/PageHeader';
 
 export default function Instrucoes() {
+    useEffect(() => {
+        document.title = 'Vipera | Instruções'
+    }, [])
+
     return (
-        <h1>Instrucoes</h1>
+        <PageHeader title='Instruções' subtitle='Recomendações e ordens gerais para opeção do sistema.' />
     );
 }
