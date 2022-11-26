@@ -17,17 +17,28 @@ export default function RegistrarChegada() {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const firstField = React.useRef() as React.MutableRefObject<HTMLInputElement>;
 
+    const [inputToFindVisitor, setInputToFindVisitor] = useState<string>('');
     const [documentId, setDocumentId] = useState<string>('');
-    const [showAlertCPF, setShowAlertCPF] = useState<boolean>(false);
     const [activeVisitors, setActiveVisitors] = useState<any[]>([]);
+    const [activeVisitorsFiltered, setActiveVisitorsFiltered] = useState<any[]>([]);
 
     function getActiveVisitors() {
         onValue(ref(database, 'visits'), (snapshot) => {
             const data = snapshot.val();
             if (data) {
                 setActiveVisitors(Object.entries(data))
+                setActiveVisitorsFiltered(Object.entries(data))
             }
         })
+    }
+
+    function filterActiveVisitors(input: string) {
+        setInputToFindVisitor(input)
+        setActiveVisitorsFiltered(activeVisitors.filter((item) => {
+            const name = item[1].name.toLowerCase()
+            const documentId = item[1].documentId
+            return (name.includes(input.toLowerCase()) || documentId.includes(input.toLowerCase()))
+        }))
     }
 
     function registerExit(visitId: string, visitorDocument: string) {
@@ -70,17 +81,15 @@ export default function RegistrarChegada() {
                                     required
                                     id='nome'
                                     errorBorderColor='red.300'
-                                    value={documentId}
-                                    maxLength={11}
-                                    onChange={(event) => { setDocumentId(event.target.value.replace(/[^0-9]/, '')) }}
+                                    value={inputToFindVisitor}
+                                    onChange={(event) => { filterActiveVisitors(event.target.value) }}
                                     placeholder='Digite o CPF ou nome'
                                 />
                             </Box>
-                            <span className={`!mt-0 pr-1 text-xs text-right ${showAlertCPF ? 'text-danger' : 'text-white'}`}>CPF inválido</span>
 
                             <Divider />
                             <Stack spacing='24px'>
-                                {activeVisitors.length == 0 ? <h3 className="text-center">Não há visitantes ativos</h3> : activeVisitors.map(el => {
+                                {activeVisitorsFiltered.length == 0 ? <h3 className="text-center">Nenhum visitante encontrado</h3> : activeVisitorsFiltered.map(el => {
                                     if (el[1].exit == '') {
                                         return (
                                             <Box key={el[0]}>
