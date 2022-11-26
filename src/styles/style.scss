@@ -11,3 +11,54 @@
         z-index: 50;
     }
 }
+
+// Pulse Point
+$pulse-color: #00d86c;
+$pulse-speed: 1s;
+
+circle {
+    fill: $pulse-color;
+    transform-origin: center;
+}
+
+.pulse-circle,
+.pulse-circle-2 {
+    stroke: $pulse-color;
+    stroke-width: 2px;
+    fill: none;
+    transform: translate3d(0, 0, 0);
+}
+
+.pulse-circle {
+    animation: pulse $pulse-speed cubic-bezier(0.39, 0.54, 0.41, 1.5) infinite;
+}
+
+.pulse-circle-2 {
+    animation: pulse-2 $pulse-speed cubic-bezier(0.39, 0.54, 0.41, 1.5) infinite;
+}
+@keyframes pulse {
+    0% {
+        r: 4;
+    }
+    50% {
+        r: 16;
+    }
+    60% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes pulse-2 {
+    0% {
+        r: 4;
+    }
+    50% {
+        r: 4;
+    }
+    100% {
+        r: 16;
+    }
+}

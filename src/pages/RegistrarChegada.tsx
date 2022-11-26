@@ -37,6 +37,7 @@ export default function RegistrarChegada() {
             // Registrando chegada
             set(ref(database, 'visits/' + uid()), {
                 documentId,
+                name,
                 place,
                 entrance: moment().format(),
                 exit: '',
@@ -68,6 +69,7 @@ export default function RegistrarChegada() {
         setNote('')
         setDocumentId('')
         setPlace('')
+        setVisitorIsHere(false)
     }
 
     function findVisitor() {
