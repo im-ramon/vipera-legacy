@@ -20,6 +20,7 @@
     "react-dom": "^18.2.0",
     "react-icons": "^4.6.0",
     "react-router-dom": "^6.4.3",
+    "recharts": "^2.1.16",
     "sass": "^1.56.1",
     "short-unique-id": "^4.4.4"
   },

@@ -12,38 +12,38 @@ export default function Mapa() {
             <PageHeader title='Mapa' subtitle='Veja onde os visitantes estão localizados.' />
             <div className="mapa_area mt-3 grid-cols-6">
                 <div className='grid-cols-6 grid gap-3'>
-                    <DashboardStat title='RP' state={4} />
-                    <DashboardStat title='SVP' state={0} />
-                    <DashboardStat title='EB Fácil' state={0} />
-                    <DashboardStat title='PC Cmt' state={0} />
-                    <DashboardStat title='PC S Cmt' state={0} />
-                    <DashboardStat title='Adj Cmdo' state={0} />
-                    <DashboardStat title='1ª Seção' state={1} />
-                    <DashboardStat title='Conformidade' state={0} />
-                    <DashboardStat title='Protocolo' state={0} />
-                    <DashboardStat title='Justiça' state={0} />
-                    <DashboardStat title='2ª Seção' state={0} />
-                    <DashboardStat title='Enfermaria' state={1} />
-                    <DashboardStat title='Museu' state={0} />
-                    <DashboardStat title='3ª Seção' state={0} />
-                    <DashboardStat title='Auditório' state={1} />
-                    <DashboardStat title='SALC' state={0} />
-                    <DashboardStat title='Tesouraria' state={0} />
-                    <DashboardStat title='4ª Seção' state={0} />
-                    <DashboardStat title='Fiscalização Adm' state={0} />
-                    <DashboardStat title='FuSEX' state={0} />
-                    <DashboardStat title='OCP' state={0} />
-                    <DashboardStat title='SFPC' state={2} />
-                    <DashboardStat title='PRM' state={0} />
-                    <DashboardStat title='Almox' state={0} />
-                    <DashboardStat title='Rancho' state={0} />
-                    <DashboardStat title='PMT' state={0} />
-                    <DashboardStat title='Estação rádio' state={0} />
-                    <DashboardStat title='Lojinha' state={1} />
-                    <DashboardStat title='1ª Cia Fuz' state={0} />
-                    <DashboardStat title='2ª Cia Fuz' state={0} />
-                    <DashboardStat title='3ª Cia Fuz' state={1} />
-                    <DashboardStat title='CCAp' state={0} />
+                    <DashboardStat colorize={true} title='RP' state={4} />
+                    <DashboardStat colorize={true} title='SVP' state={0} />
+                    <DashboardStat colorize={true} title='EB Fácil' state={0} />
+                    <DashboardStat colorize={true} title='PC Cmt' state={0} />
+                    <DashboardStat colorize={true} title='PC S Cmt' state={0} />
+                    <DashboardStat colorize={true} title='Adj Cmdo' state={0} />
+                    <DashboardStat colorize={true} title='1ª Seção' state={1} />
+                    <DashboardStat colorize={true} title='Conformidade' state={0} />
+                    <DashboardStat colorize={true} title='Protocolo' state={0} />
+                    <DashboardStat colorize={true} title='Justiça' state={0} />
+                    <DashboardStat colorize={true} title='2ª Seção' state={0} />
+                    <DashboardStat colorize={true} title='Enfermaria' state={1} />
+                    <DashboardStat colorize={true} title='Museu' state={0} />
+                    <DashboardStat colorize={true} title='3ª Seção' state={0} />
+                    <DashboardStat colorize={true} title='Auditório' state={1} />
+                    <DashboardStat colorize={true} title='SALC' state={0} />
+                    <DashboardStat colorize={true} title='Tesouraria' state={0} />
+                    <DashboardStat colorize={true} title='4ª Seção' state={0} />
+                    <DashboardStat colorize={true} title='Fiscalização Adm' state={0} />
+                    <DashboardStat colorize={true} title='FuSEX' state={0} />
+                    <DashboardStat colorize={true} title='OCP' state={0} />
+                    <DashboardStat colorize={true} title='SFPC' state={2} />
+                    <DashboardStat colorize={true} title='PRM' state={0} />
+                    <DashboardStat colorize={true} title='Almox' state={0} />
+                    <DashboardStat colorize={true} title='Rancho' state={0} />
+                    <DashboardStat colorize={true} title='PMT' state={0} />
+                    <DashboardStat colorize={true} title='Estação rádio' state={0} />
+                    <DashboardStat colorize={true} title='Lojinha' state={1} />
+                    <DashboardStat colorize={true} title='1ª Cia Fuz' state={0} />
+                    <DashboardStat colorize={true} title='2ª Cia Fuz' state={0} />
+                    <DashboardStat colorize={true} title='3ª Cia Fuz' state={1} />
+                    <DashboardStat colorize={true} title='CCAp' state={0} />
                 </div>
             </div>
         </>
