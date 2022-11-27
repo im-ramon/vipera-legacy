@@ -9,6 +9,7 @@ import AsideLinks from './_parts/AsideLinks';
 import RegistrarChegada from '../pages/RegistrarChegada';
 import RegistrarSaida from '../pages/RegistrarSaida';
 import logo from '../assets/images/img/logo.png'
+import ExcluirDados from '../pages/ExcluirDados';
 
 export default function Aside() {
     const [showAside, setShowAside] = useState<boolean>(true)
@@ -58,15 +59,7 @@ export default function Aside() {
 
                     <RegistrarChegada />
                     <RegistrarSaida />
-
-                    <li>
-                        <a href="#" className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-primary-900 pr-6">
-                            <span className="inline-flex justify-center items-center ml-4">
-                                <BiUserX size={20} />
-                            </span>
-                            <span className="ml-2 text-sm tracking-wide truncate">Excluir dados</span>
-                        </a>
-                    </li>
+                    <ExcluirDados />
                 </ul>
 
             </div>

@@ -8,18 +8,16 @@ import { useToast } from '@chakra-ui/react'
 interface PopoverCustomProps {
     visitName: string;
     onConfirm: Function;
+    disabled: boolean;
 }
 
-export function PopoverCustom({ visitName, onConfirm }: PopoverCustomProps) {
+export function PopoverExclueVisit({ visitName, onConfirm, disabled }: PopoverCustomProps) {
     const { isOpen, onOpen, onClose } = useDisclosure()
-    const toast = useToast()
+
 
     return (
         <>
-            <Tag size='md' key={'size'} onClick={onOpen} className="cursor-pointer select-none" variant='outline' colorScheme='red'>
-                <TagLabel>Registrar saída</TagLabel>
-                <TagRightIcon as={ImExit} />
-            </Tag>
+            <Button onClick={onOpen} isDisabled={disabled} colorScheme='red'>Excluir</Button>
 
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
@@ -27,28 +25,18 @@ export function PopoverCustom({ visitName, onConfirm }: PopoverCustomProps) {
                     <ModalHeader>Confirmar saída?</ModalHeader>
                     <ModalCloseButton />
                     <ModalBody>
-                        <p>Deseja registar a sáida do(a) visitante “<strong>{visitName}</strong>”?</p>
+                        <p>Deseja excluir os dados de “<strong>{visitName}</strong>”?</p>
                         <br />
                         <p>Esta operação não poderá ser desfeita.</p>
-
-                        <Box className="flex items-center justify-start opacity-40 select-none mt-4">
-                            <BiTimeFive className="mr-1" /> <span className="text-right">Saída: {moment().format('DD/MM/YYYY - HH:mm[h]')}</span>
-                        </Box>
                     </ModalBody>
 
                     <ModalFooter>
-                        <Button colorScheme='red' mr={3} onClick={() => {
+                        <Button isDisabled={disabled} colorScheme='red' mr={3} onClick={() => {
                             onConfirm()
                             onClose()
-                            toast({
-                                title: 'Saída registrada com sucesso!',
-                                status: 'success',
-                                duration: 5000,
-                                isClosable: true,
-                            })
                         }
                         }>
-                            Confirmar
+                            Excluir
                         </Button>
                         <Button onClick={onClose} variant='ghost'>Cancelar</Button>
                     </ModalFooter>

@@ -103,7 +103,7 @@ export default function RegistrarChegada() {
                                                     <Divider className="my-3" />
                                                     <Box className="flex justify-end">
                                                         <PopoverCustom
-                                                            registerExit={() => { registerExit(el[0], el[1].documentId) }}
+                                                            onConfirm={() => { registerExit(el[0], el[1].documentId) }}
                                                             visitName={el[1].name}
                                                         />
                                                     </Box>
