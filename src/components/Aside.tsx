@@ -2,7 +2,7 @@ import { useContext, useState } from 'react';
 import { AuthContext } from '../contexts/auth.context';
 
 import { Image } from '@chakra-ui/react'
-import { BiHomeAlt, BiMap, BiNotepad, BiStats, BiUserX, BiListUl, BiLogOutCircle } from "react-icons/bi";
+import { BiHomeAlt, BiMap, BiNotepad, BiLogOutCircle, BiPrinter } from "react-icons/bi";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { GrClose } from "react-icons/gr";
 import AsideLinks from './_parts/AsideLinks';
@@ -47,8 +47,8 @@ export default function Aside() {
                         <BiNotepad size={20} />
                     </AsideLinks>
 
-                    <AsideLinks to='estatisticas' title='Estatísticas'>
-                        <BiStats size={20} />
+                    <AsideLinks to='relatorios' title='Relatórios'>
+                        <BiPrinter size={20} />
                     </AsideLinks>
 
                     <li className="px-5 bg-gray-50">

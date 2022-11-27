@@ -7,6 +7,6 @@ export default function Instrucoes() {
     }, [])
 
     return (
-        <PageHeader title='Instruções' subtitle='Recomendações e ordens gerais para opeção do sistema.' />
+        <PageHeader title='Instruções' subtitle='Recomendações e ordens gerais para operação do sistema.' />
     );
 }

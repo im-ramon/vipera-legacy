@@ -44,7 +44,7 @@ export default function ExcluirDados() {
     function handleDeleteVisitor() {
         if (visitorIsHere) {
             toast({
-                title: 'O visitante que você que excluir possuí uma visita aberta.',
+                title: 'O visitante que você quer excluir possui uma visita aberta.',
                 description: 'Registre a saída do visitante antes de apagar seus dados.',
                 status: 'warning',
                 duration: 5000,

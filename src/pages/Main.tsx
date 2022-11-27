@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import Dashboard from "./Dashboard";
 import Mapa from "./Mapa";
 import Instrucoes from "./Instrucoes";
-import Estatisticas from "./Estatisticas";
+import Relatorios from "./Relatorios";
 
 export default function Main() {
     return (
@@ -11,7 +11,7 @@ export default function Main() {
                 <Route path="/" element={<Dashboard />} />
                 <Route path="/mapa" element={<Mapa />} />
                 <Route path="/instrucoes" element={<Instrucoes />} />
-                <Route path="/estatisticas" element={<Estatisticas />} />
+                <Route path="/relatorios" element={<Relatorios />} />
             </Routes>
         </main>
     );
