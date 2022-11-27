@@ -1,49 +1,68 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { child, get, onValue, ref } from 'firebase/database';
+import moment from 'moment';
 import DashboardStat from '../components/_parts/DashboardStat';
 import PageHeader from '../components/_parts/PageHeader';
+import { database } from '../services/firebase';
 
 export default function Mapa() {
+
+    const [places, setPlaces] = useState<any[]>([])
+    const [listPlaces, setListPlaces] = useState<any[]>([])
+
+    function getPlaces() {
+        get(child(ref(database), 'places')).then((snapshot) => {
+            if (snapshot.exists()) {
+                const data = Object.keys(snapshot.val()).map(value => {
+                    return {
+                        place: value
+                    }
+                })
+                setPlaces(data)
+            } else {
+                console.log("No data available in key 'places'");
+            }
+        })
+            .catch((error) => { console.error(error); });
+    }
+
+    async function getVisitorsAcitive() {
+        onValue(ref(database, 'visits'), (snapshot) => {
+            const data = snapshot.val();
+            if (data) {
+                const data = Object.entries(snapshot.val())
+                    .map((value: any) => {
+                        return value[1]
+                    })
+                    .filter(value => {
+                        return value.exit === ''
+                    })
+
+                setListPlaces(data)
+            }
+        })
+    }
+
+
+    function filterArrayPlace(place: string) {
+        return listPlaces.reduce((prev, curr: any) => {
+            return prev + (curr.place === place ? 1 : 0)
+        }, 0)
+    }
+
+
     useEffect(() => {
+        getVisitorsAcitive()
+        getPlaces()
         document.title = 'Vipera | Mapa'
     }, [])
 
     return (
         <>
-            <PageHeader title='Mapa' subtitle='Veja onde os visitantes estão localizados.' />
+            <PageHeader title='Mapa' subtitle='Monitore a quantidade de visitantes por localidade.' />
             <div className="mapa_area mt-3 grid-cols-6">
                 <div className='grid-cols-6 grid gap-3'>
-                    <DashboardStat colorize={true} title='RP' state={4} />
-                    <DashboardStat colorize={true} title='SVP' state={0} />
-                    <DashboardStat colorize={true} title='EB Fácil' state={0} />
-                    <DashboardStat colorize={true} title='PC Cmt' state={0} />
-                    <DashboardStat colorize={true} title='PC S Cmt' state={0} />
-                    <DashboardStat colorize={true} title='Adj Cmdo' state={0} />
-                    <DashboardStat colorize={true} title='1ª Seção' state={1} />
-                    <DashboardStat colorize={true} title='Conformidade' state={0} />
-                    <DashboardStat colorize={true} title='Protocolo' state={0} />
-                    <DashboardStat colorize={true} title='Justiça' state={0} />
-                    <DashboardStat colorize={true} title='2ª Seção' state={0} />
-                    <DashboardStat colorize={true} title='Enfermaria' state={1} />
-                    <DashboardStat colorize={true} title='Museu' state={0} />
-                    <DashboardStat colorize={true} title='3ª Seção' state={0} />
-                    <DashboardStat colorize={true} title='Auditório' state={1} />
-                    <DashboardStat colorize={true} title='SALC' state={0} />
-                    <DashboardStat colorize={true} title='Tesouraria' state={0} />
-                    <DashboardStat colorize={true} title='4ª Seção' state={0} />
-                    <DashboardStat colorize={true} title='Fiscalização Adm' state={0} />
-                    <DashboardStat colorize={true} title='FuSEX' state={0} />
-                    <DashboardStat colorize={true} title='OCP' state={0} />
-                    <DashboardStat colorize={true} title='SFPC' state={2} />
-                    <DashboardStat colorize={true} title='PRM' state={0} />
-                    <DashboardStat colorize={true} title='Almox' state={0} />
-                    <DashboardStat colorize={true} title='Rancho' state={0} />
-                    <DashboardStat colorize={true} title='PMT' state={0} />
-                    <DashboardStat colorize={true} title='Estação rádio' state={0} />
-                    <DashboardStat colorize={true} title='Lojinha' state={1} />
-                    <DashboardStat colorize={true} title='1ª Cia Fuz' state={0} />
-                    <DashboardStat colorize={true} title='2ª Cia Fuz' state={0} />
-                    <DashboardStat colorize={true} title='3ª Cia Fuz' state={1} />
-                    <DashboardStat colorize={true} title='CCAp' state={0} />
+                    {places.map(el => <DashboardStat key={el['place']} colorize={true} title={el['place']} state={filterArrayPlace(el['place'])} />)}
                 </div>
             </div>
         </>

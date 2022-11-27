@@ -88,6 +88,7 @@ export default function RegistrarChegada() {
                             </Box>
 
                             <Divider />
+                            <h1 className="font-semibold text-center">Visitantes presentes</h1>
                             <Stack spacing='24px'>
                                 {activeVisitorsFiltered.length == 0 ? <h3 className="text-center">Nenhum visitante encontrado</h3> : activeVisitorsFiltered.map(el => {
                                     if (el[1].exit == '') {
