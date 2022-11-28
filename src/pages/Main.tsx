@@ -3,6 +3,7 @@ import Dashboard from "./Dashboard";
 import Mapa from "./Mapa";
 import Instrucoes from "./Instrucoes";
 import Relatorios from "./Relatorios";
+import Perfil from "./Perfil";
 
 export default function Main() {
     return (
@@ -12,6 +13,7 @@ export default function Main() {
                 <Route path="/mapa" element={<Mapa />} />
                 <Route path="/instrucoes" element={<Instrucoes />} />
                 <Route path="/relatorios" element={<Relatorios />} />
+                <Route path="/perfil" element={<Perfil />} />
             </Routes>
         </main>
     );

@@ -171,7 +171,7 @@ export default function Dashboard() {
                 <DashboardStat title='Visitas hoje' state={visitsPerDay} />
             </div>
             <div className='mt-3 border rounded-md py-4 px-2 h-3/5 '>
-                <h1 className='text-right text-xl pb-2 pr-8 font-semibold'>Visitas por mês</h1>
+                <h1 className='text-center text-xl pb-2 pr-8 font-semibold'>Visitas por mês</h1>
                 <ResponsiveContainer width="100%" height="90%">
                     <LineChart
                         width={500}
@@ -190,7 +190,7 @@ export default function Dashboard() {
                         <Tooltip />
                         <Legend />
                         {/* <Line type="monotone" dataKey="pv" stroke="#8884d8" activeDot={{ r: 8 }} /> */}
-                        <Line type="monotone" dataKey="total" name='Total de visitas' activeDot={{ r: 8 }} stroke="#42cf78" />
+                        <Line type="monotone" dataKey="total" name='Total de visitas' activeDot={{ r: 8 }} stroke="#74BF04" />
                     </LineChart>
                 </ResponsiveContainer>
             </div>

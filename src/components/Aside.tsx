@@ -2,7 +2,7 @@ import { useContext, useState } from 'react';
 import { AuthContext } from '../contexts/auth.context';
 
 import { Image } from '@chakra-ui/react'
-import { BiHomeAlt, BiMap, BiNotepad, BiLogOutCircle, BiPrinter } from "react-icons/bi";
+import { BiHomeAlt, BiMap, BiNotepad, BiLogOutCircle, BiPrinter, BiUser } from "react-icons/bi";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { GrClose } from "react-icons/gr";
 import AsideLinks from './_parts/AsideLinks';
@@ -17,8 +17,8 @@ export default function Aside() {
     const { signOut } = useContext(AuthContext)
 
     return (
-        <aside className={`flex flex-col relative transition-all duration-300 bg-white h-full ${showAside ? 'w-64 border-r' : 'w-0 border-none'}`}>
-            <div className='absolute top-3 right-0 rounded-tr-md rounded-br-md translate-x-8 w-8 h-8 flex justify-center items-center bg-white cursor-pointer border border-l-0' onClick={() => setShowAside(!showAside)}>
+        <aside className={`flex shadow-md flex-col relative transition-all duration-300 bg-white h-full ${showAside ? 'w-64 border-r' : 'w-0 border-none'}`}>
+            <div className={`absolute top-3 right-0 rounded-tr-md rounded-br-md translate-x-8 w-8 h-8 flex justify-center items-center bg-white cursor-pointer border border-l-0 ${showAside ? '' : 'shadow-md'}`} onClick={() => setShowAside(!showAside)}>
                 {showAside ? <GrClose /> : <GiHamburgerMenu />}
             </div>
             <div className="flex items-center justify-center h-14 border-b overflow-hidden">
@@ -29,12 +29,6 @@ export default function Aside() {
             </div>
             <div className="overflow-y-auto overflow-x-hidden flex-grow">
                 <ul className="flex flex-col py-4 space-y-1">
-                    <li className="px-5 bg-gray-50">
-                        <div className="flex flex-row items-center h-8">
-                            <div className="text-sm font-light tracking-wide text-gray-500">Menu</div>
-                        </div>
-                    </li>
-
                     <AsideLinks to='' title='Dashboard'>
                         <BiHomeAlt size={20} />
                     </AsideLinks>
@@ -60,6 +54,16 @@ export default function Aside() {
                     <RegistrarChegada />
                     <RegistrarSaida />
                     <ExcluirDados />
+
+                    <li className="px-5 bg-gray-50">
+                        <div className="flex flex-row items-center h-8">
+                            <div className="text-sm font-light tracking-wide text-gray-500">Usuário</div>
+                        </div>
+                    </li>
+
+                    <AsideLinks to='perfil' title='Perfil'>
+                        <BiUser size={20} />
+                    </AsideLinks>
                 </ul>
 
             </div>
