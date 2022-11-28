@@ -16,10 +16,7 @@ export function PopoverCustom({ visitName, onConfirm }: PopoverCustomProps) {
 
     return (
         <>
-            <Tag size='md' key={'size'} onClick={onOpen} className="cursor-pointer select-none" variant='outline' colorScheme='red'>
-                <TagLabel>Registrar saída</TagLabel>
-                <TagRightIcon as={ImExit} />
-            </Tag>
+            <Button colorScheme='red' onClick={onOpen} size='sm' rightIcon={<ImExit />}>Registrar saída</Button>
 
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
