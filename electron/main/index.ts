@@ -35,8 +35,10 @@ const indexHtml = join(process.env.DIST, 'index.html')
 
 async function createWindow() {
     win = new BrowserWindow({
-        title: 'Main window',
-        icon: join(process.env.PUBLIC, 'favicon.svg'),
+        title: 'Vipera',
+        icon: join(process.env.PUBLIC, 'viepera_logo.png'),
+        minWidth: 1024,
+        minHeight: 567,
         width: 1366,
         height: 768,
         webPreferences: {
@@ -64,6 +66,8 @@ async function createWindow() {
         if (url.startsWith('https:')) shell.openExternal(url)
         return { action: 'deny' }
     })
+
+    win.setMenuBarVisibility(false)
 }
 
 app.whenReady().then(createWindow)
