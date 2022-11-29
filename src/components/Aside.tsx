@@ -10,6 +10,7 @@ import RegistrarChegada from '../pages/RegistrarChegada';
 import RegistrarSaida from '../pages/RegistrarSaida';
 import logo from '../assets/images/img/logo.png'
 import ExcluirDados from '../pages/ExcluirDados';
+import { NavLink } from 'react-router-dom';
 
 export default function Aside() {
     const [showAside, setShowAside] = useState<boolean>(true)
@@ -68,12 +69,12 @@ export default function Aside() {
 
             </div>
             <div className='mt-auto' onClick={() => { signOut() }}>
-                <a href="#" className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-danger pr-6">
+                <NavLink to={'/'} className="relative before:bg-green-500 flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-danger pr-6">
                     <span className="inline-flex justify-center items-center ml-4">
                         <BiLogOutCircle />
                     </span>
                     <span className="ml-2 text-sm tracking-wide truncate">Sair</span>
-                </a>
+                </NavLink>
             </div>
         </aside>
     )

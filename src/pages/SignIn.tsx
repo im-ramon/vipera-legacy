@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { HiOutlineKey, HiOutlineLockClosed, HiOutlineMail } from "react-icons/hi";
-import { Box, Image, Input, InputGroup, InputLeftElement, Divider } from '@chakra-ui/react';
+import { Box, Image, Input, InputGroup, InputLeftElement, Divider, Button } from '@chakra-ui/react';
 import logo from '../assets/images/img/logo.png';
 import { AuthContext } from '../contexts/auth.context';
 
@@ -52,8 +52,10 @@ export function SignIn() {
                 <div className="flex items-start">
                     <a href="#" className="ml-auto text-sm text-primary-900 hover:underline">Esqueci a senha?</a>
                 </div>
+                <Button type="submit" colorScheme="green" className="w-full">Entrar</Button>
+                {/* 
                 <button type="submit" className="w-full text-white bg-primary-900 hover:bg-primary-800 focus:ring-2 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Entrar</button>
-                {/* <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
+                <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
                     Ainda tem conta? <a href="#" className="text-primary-900 hover:underline ">Criar uma conta</a>
                 </div> */}
             </form>
