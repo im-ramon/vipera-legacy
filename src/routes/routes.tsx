@@ -2,7 +2,6 @@ import { createBrowserRouter, BrowserRouter, Routes, Route } from "react-router-
 import Aside from '../components/Aside';
 import Main from '../pages/Main';
 import Dashboard from "../pages/Dashboard";
-import Home from "../pages/Home";
 
 export default function Router() {
     return (
