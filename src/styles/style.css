@@ -1,0 +1,88 @@
+@charset "UTF-8";
+.active {
+  position: relative;
+}
+.active::before {
+  content: "•";
+  color: #74bf04;
+  font-size: 1.2rem;
+  margin-top: auto;
+  right: 1rem;
+  position: absolute;
+  z-index: 50;
+}
+
+circle {
+  fill: #00d86c;
+  transform-origin: center;
+}
+
+.pulse-circle,
+.pulse-circle-2 {
+  stroke: #00d86c;
+  stroke-width: 2px;
+  fill: none;
+  transform: translate3d(0, 0, 0);
+}
+
+.pulse-circle {
+  -webkit-animation: pulse 1s cubic-bezier(0.39, 0.54, 0.41, 1.5) infinite;
+          animation: pulse 1s cubic-bezier(0.39, 0.54, 0.41, 1.5) infinite;
+}
+
+.pulse-circle-2 {
+  -webkit-animation: pulse-2 1s cubic-bezier(0.39, 0.54, 0.41, 1.5) infinite;
+          animation: pulse-2 1s cubic-bezier(0.39, 0.54, 0.41, 1.5) infinite;
+}
+
+@-webkit-keyframes pulse {
+  0% {
+    r: 4;
+  }
+  50% {
+    r: 16;
+  }
+  60% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    r: 4;
+  }
+  50% {
+    r: 16;
+  }
+  60% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@-webkit-keyframes pulse-2 {
+  0% {
+    r: 4;
+  }
+  50% {
+    r: 4;
+  }
+  100% {
+    r: 16;
+  }
+}
+@keyframes pulse-2 {
+  0% {
+    r: 4;
+  }
+  50% {
+    r: 4;
+  }
+  100% {
+    r: 16;
+  }
+}/*# sourceMappingURL=style.css.map */
