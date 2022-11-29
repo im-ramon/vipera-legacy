@@ -1,10 +1,12 @@
-import React, { useEffect, useState, PureComponent } from 'react';
-import PageHeader from '../components/_parts/PageHeader';
-import DashboardStat from '../components/_parts/DashboardStat';
+import { useEffect, useState } from 'react';
+
 import { child, get, onValue, ref } from 'firebase/database';
 import { database } from '../services/firebase';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import moment from 'moment';
+
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import PageHeader from '../components/_parts/PageHeader';
+import DashboardStat from '../components/_parts/DashboardStat';
 
 export default function Dashboard() {
 

@@ -1,5 +1,5 @@
+import { Spinner } from '@chakra-ui/react';
 
-import { Spinner } from '@chakra-ui/react'
 export default function Loading() {
     return (
         <div className="w-full justify-center items-center h-screen bg-white flex">

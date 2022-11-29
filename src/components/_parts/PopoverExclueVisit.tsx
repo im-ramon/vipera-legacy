@@ -1,9 +1,4 @@
-import React from 'react';
-import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, Button, useDisclosure, Box, Tag, TagLabel, TagRightIcon, } from '@chakra-ui/react'
-import { ImExit } from 'react-icons/im';
-import { BiTimeFive } from 'react-icons/bi';
-import moment from 'moment';
-import { useToast } from '@chakra-ui/react'
+import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, Button, useDisclosure } from '@chakra-ui/react'
 
 interface PopoverCustomProps {
     visitName: string;

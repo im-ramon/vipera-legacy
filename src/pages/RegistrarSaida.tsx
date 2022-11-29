@@ -1,17 +1,14 @@
 import React, { useEffect, useState } from "react";
 
-import { Divider, Box, Button, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerFooter, DrawerHeader, DrawerOverlay, FormLabel, Input, InputGroup, InputLeftAddon, InputRightAddon, Select, Stack, Textarea, useDisclosure, Popover, PopoverTrigger, PopoverContent, PopoverHeader, PopoverCloseButton, PopoverBody, PopoverArrow, PopoverFooter, ButtonGroup } from "@chakra-ui/react";
-import AsideLinks from "../components/_parts/AsideLinks";
-import { PopoverCustom } from "../components/_parts/PopoverCustom";
 import { BiUserMinus } from "react-icons/bi";
-import { ImExit } from "react-icons/im";
-import AsideLinksEmpty from "../components/_parts/AsideLinksEmpty";
-import CPF from 'cpf-check';
-import { Tag, TagLabel, TagLeftIcon, TagRightIcon, TagCloseButton } from '@chakra-ui/react'
 import { database } from "../services/firebase";
-import { onValue, ref, set, update } from "firebase/database";
-import PulsePoint from '../components/_parts/PulsePoint'
+import { onValue, ref, update } from "firebase/database";
 import moment from "moment";
+
+import { PopoverCustom } from "../components/_parts/PopoverCustom";
+import AsideLinksEmpty from "../components/_parts/AsideLinksEmpty";
+import PulsePoint from '../components/_parts/PulsePoint'
+import { Divider, Box, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerHeader, DrawerOverlay, FormLabel, Input, Stack, useDisclosure } from "@chakra-ui/react";
 
 export default function RegistrarChegada() {
     const { isOpen, onOpen, onClose } = useDisclosure()

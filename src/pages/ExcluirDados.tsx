@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
+
 import { database } from "../services/firebase";
-import { Box, Button, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerFooter, DrawerHeader, DrawerOverlay, FormLabel, Input, Stack, Select, Textarea, useDisclosure } from "@chakra-ui/react";
-import { BiTimeFive, BiUserPlus, BiUserX } from "react-icons/bi";
-import AsideLinksEmpty from "../components/_parts/AsideLinksEmpty";
 import CPF from 'cpf-check';
-import { onValue, ref, remove, set } from "firebase/database";
+import { onValue, ref, remove } from "firebase/database";
 import { useToast } from '@chakra-ui/react'
-import ShortUniqueId from "short-unique-id";
-import moment from "moment";
-import { PopoverCustom } from "../components/_parts/PopoverCustom";
+
+import { Box, Button, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerFooter, DrawerHeader, DrawerOverlay, FormLabel, Input, Stack, useDisclosure } from "@chakra-ui/react";
+import { BiUserX } from "react-icons/bi";
+import AsideLinksEmpty from "../components/_parts/AsideLinksEmpty";
 import { PopoverExclueVisit } from "../components/_parts/PopoverExclueVisit";
 
 export default function ExcluirDados() {

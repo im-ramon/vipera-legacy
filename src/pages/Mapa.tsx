@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+
 import { child, get, onValue, ref } from 'firebase/database';
-import moment from 'moment';
+import { database } from '../services/firebase';
+
 import DashboardStat from '../components/_parts/DashboardStat';
 import PageHeader from '../components/_parts/PageHeader';
-import { database } from '../services/firebase';
 
 export default function Mapa() {
 

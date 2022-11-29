@@ -1,8 +1,10 @@
 import React, { useContext, useState } from 'react';
+
+import { AuthContext } from '../contexts/auth.context';
+
 import { HiOutlineKey, HiOutlineLockClosed, HiOutlineMail } from "react-icons/hi";
 import { Box, Image, Input, InputGroup, InputLeftElement, Divider, Button } from '@chakra-ui/react';
 import logo from '../assets/images/img/logo.png';
-import { AuthContext } from '../contexts/auth.context';
 
 export function SignIn() {
     const { signIn } = useContext(AuthContext)

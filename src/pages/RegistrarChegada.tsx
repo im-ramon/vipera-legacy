@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
+
 import { database } from "../services/firebase";
-import { Box, Button, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerFooter, DrawerHeader, DrawerOverlay, FormLabel, Input, Stack, Select, Textarea, useDisclosure } from "@chakra-ui/react";
-import { BiTimeFive, BiUserPlus } from "react-icons/bi";
-import AsideLinksEmpty from "../components/_parts/AsideLinksEmpty";
 import CPF from 'cpf-check';
 import { onValue, ref, set } from "firebase/database";
 import { useToast } from '@chakra-ui/react'
 import ShortUniqueId from "short-unique-id";
 import moment from "moment";
+
+import { BiTimeFive, BiUserPlus } from "react-icons/bi";
+import { Box, Button, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerFooter, DrawerHeader, DrawerOverlay, FormLabel, Input, Stack, Select, Textarea, useDisclosure } from "@chakra-ui/react";
+import AsideLinksEmpty from "../components/_parts/AsideLinksEmpty";
 
 export default function RegistrarChegada() {
     const { isOpen, onOpen, onClose } = useDisclosure()

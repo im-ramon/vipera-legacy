@@ -1,9 +1,8 @@
-import { useContext, useEffect } from 'react'
+import { useContext } from 'react'
 import { AuthContext } from './contexts/auth.context';
 import { SignIn } from './pages/SignIn';
 import Router from './routes/routes';
 import './styles/style.scss';
-import { auth } from './services/firebase'
 import Loading from './components/Loading';
 
 function App() {

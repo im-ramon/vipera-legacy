@@ -1,13 +1,16 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { Button, Stack, Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, useDisclosure, Box, FormLabel, Input, Divider, InputGroup, InputLeftAddon, InputRightAddon, Heading, Image, Editable, EditablePreview, EditableInput, EditableTextarea, Collapse } from '@chakra-ui/react';
-import { BiPrinter } from 'react-icons/bi';
-import PageHeader from '../components/_parts/PageHeader';
+
 import { child, get, ref } from 'firebase/database';
 import { database } from '../services/firebase';
 import { useReactToPrint } from 'react-to-print';
 import moment from 'moment';
-import brasao from '../assets/images/img/brasao.png'
 import ShortUniqueId from 'short-unique-id';
+
+import { Button, useDisclosure, Input, InputGroup, InputLeftAddon, Heading, Editable, EditablePreview, EditableInput, EditableTextarea, Collapse } from '@chakra-ui/react';
+import { BiPrinter } from 'react-icons/bi';
+import PageHeader from '../components/_parts/PageHeader';
+
+import brasao from '../assets/images/img/brasao.png'
 
 export default function Relatorios() {
     const componentRef = useRef(null);
@@ -15,7 +18,7 @@ export default function Relatorios() {
         content: () => componentRef.current,
     });
 
-    const { isOpen, onToggle, onOpen } = useDisclosure()
+    const { isOpen, onOpen } = useDisclosure()
     const uid = new ShortUniqueId({ length: 5 });
 
 
