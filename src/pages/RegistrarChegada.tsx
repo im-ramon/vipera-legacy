@@ -201,7 +201,7 @@ export default function RegistrarChegada() {
                                     onChange={(event) => { setPlace(event.target.value) }}
 
                                 >
-                                    {places.map((el) => <option key={el[0]} value={el[0]}>{el[0]}: {el[1]}</option>)}
+                                    {places.map((el) => <option key={el[0]} value={el[1]}>{el[1]}</option>)}
                                 </Select>
                             </Box>
 

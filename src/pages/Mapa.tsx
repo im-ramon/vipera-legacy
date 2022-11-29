@@ -13,7 +13,7 @@ export default function Mapa() {
     function getPlaces() {
         get(child(ref(database), 'places')).then((snapshot) => {
             if (snapshot.exists()) {
-                const data = Object.keys(snapshot.val()).map(value => {
+                const data = Object.entries(snapshot.val()).map(value => {
                     return {
                         place: value
                     }
@@ -62,7 +62,7 @@ export default function Mapa() {
             <PageHeader title='Mapa' subtitle='Monitore a quantidade de visitantes por localidade.' />
             <div className="mapa_area mt-3 grid-cols-6">
                 <div className='grid-cols-6 grid gap-3'>
-                    {places.map(el => <DashboardStat key={el['place']} colorize={true} title={el['place']} state={filterArrayPlace(el['place'])} />)}
+                    {places.map(el => <DashboardStat key={el['place'][0]} colorize={true} title={el['place'][1]} state={filterArrayPlace(el['place'][1])} />)}
                 </div>
             </div>
         </>
