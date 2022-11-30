@@ -62,3 +62,23 @@ circle {
         r: 16;
     }
 }
+
+*::-webkit-scrollbar {
+    width: 8px; /* width of the entire scrollbar */
+}
+
+*::-webkit-scrollbar-track {
+    background: #ffffff; /* color of the tracking area */
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #d3d3d3; /* color of the scroll thumb */
+    border-radius: 8px; /* roundness of the scroll thumb */
+    border: 1px solid #fff; /* creates padding around scroll thumb */
+}
+
+.dark {
+    .drawerbody {
+        background: red !important;
+    }
+}

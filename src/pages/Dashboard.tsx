@@ -172,7 +172,7 @@ export default function Dashboard() {
                 <DashboardStat title='Visitas esta semana' state={visitsPerWeek} />
                 <DashboardStat title='Visitas hoje' state={visitsPerDay} />
             </div>
-            <div className='mt-3 border rounded-md py-4 px-2 h-3/5 '>
+            <div className='mt-3 border rounded-md py-4 px-2 h-3/5 hover:border-primary-900 dark:hover:border-primary-900 transition-all dark:border-gray-600 dark:text-white'>
                 <h1 className='text-center text-xl pb-2 pr-8 font-semibold'>Visitas por mês</h1>
                 <ResponsiveContainer width="100%" height="90%">
                     <LineChart

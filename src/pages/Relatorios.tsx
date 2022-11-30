@@ -87,7 +87,7 @@ export default function Relatorios() {
             </div>
             <form onSubmit={(e) => { generatesReport(e) }} className='grid gap-4 grid-cols-12'>
                 <InputGroup size='md' className='col-span-5'>
-                    <InputLeftAddon children='Data inicial' />
+                    <InputLeftAddon children='Data inicial' className='dark:bg-gray-700 dark:border-gray-600 dark:text-white' />
                     <Input
                         required
                         id="report_date"
@@ -97,10 +97,11 @@ export default function Relatorios() {
                         max={finalDate}
                         value={initialDate}
                         onChange={e => { setInitialDate(e.target.value) }}
+                        className='dark:bg-gray-700 dark:border-gray-600 dark:text-white'
                     />
                 </InputGroup>
                 <InputGroup size='md' className='col-span-5'>
-                    <InputLeftAddon children='Data final' />
+                    <InputLeftAddon children='Data final' className='dark:bg-gray-700 dark:border-gray-600 dark:text-white' />
                     <Input
                         required
                         id="report_date"
@@ -110,13 +111,14 @@ export default function Relatorios() {
                         max={today}
                         value={finalDate}
                         onChange={e => { setFinalDate(e.target.value) }}
+                        className='dark:bg-gray-700 dark:border-gray-600 dark:text-white'
                     />
 
                 </InputGroup>
-                <Button type='submit' colorScheme='green' variant='outline' isLoading={isLoading} className='col-span-2'>Gerar relatório</Button>
-            </form>
+                <Button type='submit' colorScheme='green' variant='outline' isLoading={isLoading} className='col-span-2 dark:text-primary-900'>Gerar relatório</Button>
+            </form >
             <Collapse in={isOpen} animateOpacity>
-                <div ref={componentRef} className='rounded-md mt-4 py-4 px-10 border'>
+                <div ref={componentRef} className='rounded-md mt-4 py-4 px-10 border bg-white'>
                     <div>
                         {/* 
                     documentId: "03616013526",
@@ -133,7 +135,7 @@ export default function Relatorios() {
                                 <p>35º BATALHÃO DE INFANTARIA</p>
                                 <p>(BATALHÃO LUIZ BARBALHO BEZERRA)</p>
                             </div>
-                            <h1 className='uppercase my-8 font-bold text-text text-center w-full'>
+                            <h1 className='uppercase my-8 font-bold text-text  text-center w-full'>
                                 <span>Relatório de visitantes</span>
                                 {initialDate === finalDate ? (
                                     <span> no dia {moment(initialDate).format("DD/MM/YYYY")}</span>
@@ -143,7 +145,6 @@ export default function Relatorios() {
                                 <span>.</span>
                             </h1>
 
-                            <h3 className='w-full text-right my-2 pr-2 text-gray-400'>Relatório impresso em: {moment().format('DD/MM/YYYY [às] HH:mm[h]')}</h3>
                             <table className="w-full text-sm text-left text-gray-500 border">
                                 <thead className="text-xs text-gray-700 uppercase ">
                                     <tr>
@@ -182,7 +183,7 @@ export default function Relatorios() {
                                 <tbody className='text-xs'>
                                     {visitsListFiltered.map((el, index) => {
                                         return (
-                                            <tr key={uid()} className={`border-y-2 ${index % 2 == 0 ? 'bg-white' : 'bg-gray-100'}`}>
+                                            <tr key={uid()} className={`border-y-2 dark:text-white${index % 2 == 0 ? 'bg-white' : 'bg-gray-100'}`}>
                                                 <th scope="row" className="py-3 px-4 font-medium text-gray-900 whitespace-nowrap">
                                                     {el.name}
                                                 </th>
@@ -205,12 +206,22 @@ export default function Relatorios() {
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <td scope="col" colSpan={5} className="py-3 px-4 bg-gray-50 text-right">Total de visitas: <strong>{visitsListFiltered.length}</strong></td>
+                                        <td scope="col" colSpan={5} className="py-3 px-4 bg-gray-50 text-right">
+                                            <h3 className='w-full text-right pr-2 text-gray-400'>
+                                                <span>Relatório de visitantes</span>
+                                                {initialDate === finalDate ? (
+                                                    <span> no dia {moment(initialDate).format("DD/MM/YYYY")}</span>
+                                                ) : (
+                                                    <span> entre os dias {moment(initialDate).format("DD/MM/YYYY")} e {moment(finalDate).format("DD/MM/YYYY")}</span>
+                                                )}
+                                                <p className='text-xs'>Impresso em: {moment().format('DD/MM/YYYY [às] HH:mm[h]')}</p>
+                                            </h3>
+                                        </td>
                                     </tr>
                                 </tfoot>
                             </table>
+                            <p className="py-1 px-4 text-gray-600 text-right">Total de visitas: <strong>{visitsListFiltered.length}</strong></p>
                         </div>
-
                         <Editable defaultValue={`Feira de Santana, BA, ${moment().format('DD/MM/YYYY')}`} className='mt-8 text-text w-full text-center'>
                             <EditablePreview />
                             <EditableInput />

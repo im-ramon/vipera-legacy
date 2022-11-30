@@ -3,6 +3,7 @@ import { ImExit } from 'react-icons/im';
 import { BiTimeFive } from 'react-icons/bi';
 import moment from 'moment';
 import { useToast } from '@chakra-ui/react'
+import { useDarkMode } from 'usehooks-ts';
 
 interface PopoverCustomProps {
     visitName: string;
@@ -12,6 +13,7 @@ interface PopoverCustomProps {
 export function PopoverCustom({ visitName, onConfirm }: PopoverCustomProps) {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const toast = useToast()
+    const { isDarkMode } = useDarkMode()
 
     return (
         <>
@@ -19,10 +21,10 @@ export function PopoverCustom({ visitName, onConfirm }: PopoverCustomProps) {
 
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
-                <ModalContent>
-                    <ModalHeader>Confirmar saída?</ModalHeader>
-                    <ModalCloseButton />
-                    <ModalBody>
+                <ModalContent className={`${isDarkMode ? 'dark' : 'light'}`}>
+                    <ModalHeader className='dark:bg-gray-800 dark:text-white'>Confirmar saída?</ModalHeader>
+                    <ModalCloseButton className="dark:text-white" />
+                    <ModalBody className='dark:bg-gray-800 dark:text-white'>
                         <p>Deseja registar a sáida do(a) visitante “<strong>{visitName}</strong>”?</p>
                         <br />
                         <p>Esta operação não poderá ser desfeita.</p>
@@ -32,7 +34,7 @@ export function PopoverCustom({ visitName, onConfirm }: PopoverCustomProps) {
                         </Box>
                     </ModalBody>
 
-                    <ModalFooter>
+                    <ModalFooter className='dark:bg-gray-800 dark:text-white'>
                         <Button colorScheme='red' mr={3} onClick={() => {
                             onConfirm()
                             onClose()
@@ -46,7 +48,7 @@ export function PopoverCustom({ visitName, onConfirm }: PopoverCustomProps) {
                         }>
                             Confirmar
                         </Button>
-                        <Button onClick={onClose} variant='ghost'>Cancelar</Button>
+                        <Button onClick={onClose} variant='ghost' className="dark:hover:bg-gray-600 dark:border-gray-600">Cancelar</Button>
                     </ModalFooter>
                 </ModalContent>
             </Modal>

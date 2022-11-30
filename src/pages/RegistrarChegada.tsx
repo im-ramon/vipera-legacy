@@ -10,8 +10,11 @@ import moment from "moment";
 import { BiTimeFive, BiUserPlus } from "react-icons/bi";
 import { Box, Button, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerFooter, DrawerHeader, DrawerOverlay, FormLabel, Input, Stack, Select, Textarea, useDisclosure } from "@chakra-ui/react";
 import AsideLinksEmpty from "../components/_parts/AsideLinksEmpty";
+import { useDarkMode } from 'usehooks-ts'
 
 export default function RegistrarChegada() {
+    const { isDarkMode } = useDarkMode()
+
     const { isOpen, onOpen, onClose } = useDisclosure()
     const firstField = React.useRef() as React.MutableRefObject<HTMLInputElement>;
 
@@ -140,16 +143,18 @@ export default function RegistrarChegada() {
                 onClose={onClose}
             >
                 <DrawerOverlay />
-                <DrawerContent>
-                    <DrawerCloseButton />
-                    <DrawerHeader borderBottomWidth='1px'>
+                <DrawerContent
+                    className={`${isDarkMode ? 'dark' : 'light'}`}
+                >
+                    <DrawerCloseButton className="dark:text-white" />
+                    <DrawerHeader borderBottomWidth='1px' className="dark:bg-gray-800 dark:text-white dark:border-gray-600">
                         Registrar chegada
                     </DrawerHeader>
 
-                    <DrawerBody>
+                    <DrawerBody className="dark:bg-gray-800">
                         <Stack spacing='24px'>
                             <Box>
-                                <FormLabel htmlFor='nome'>CPF</FormLabel>
+                                <FormLabel htmlFor='nome' className="dark:text-white">CPF</FormLabel>
                                 <Input
                                     required
                                     onBlur={() => { setShowAlertCPF(!isValidCPF()) }}
@@ -161,13 +166,14 @@ export default function RegistrarChegada() {
                                     maxLength={11}
                                     onChange={(event) => { setDocumentId(event.target.value.replace(/[^0-9]/, '')) }}
                                     placeholder='00000000000'
+                                    className="dark:bg-gray-700 dark:text-white dark:border-gray-600"
                                 />
                             </Box>
 
-                            <span className={`!mt-1 pr-1 text-xs text-right ${showAlertCPF ? 'text-danger' : 'text-white'}`}>CPF inválido</span>
+                            <span className={`!mt-1 pr-1 text-xs text-right ${showAlertCPF ? 'text-danger' : 'text-white dark:text-gray-800'}`}>CPF inválido</span>
 
                             <Box>
-                                <FormLabel htmlFor='nome'>Nome</FormLabel>
+                                <FormLabel htmlFor='nome' className="dark:text-white">Nome</FormLabel>
                                 <Input
                                     disabled={!CPF.validate(documentId)}
                                     required
@@ -175,6 +181,7 @@ export default function RegistrarChegada() {
                                     value={name}
                                     onChange={(event) => { setName(event.target.value) }}
                                     placeholder='Nome completo do visitante'
+                                    className="dark:bg-gray-700 dark:text-white dark:border-gray-600"
                                 />
                             </Box>
 
@@ -189,11 +196,12 @@ export default function RegistrarChegada() {
                                 value={dateTime}
                                 onChange={(event) => { setDateTime(event.target.value) }}
                                 type="datetime-local"
+                                className="dark:bg-gray-700 dark:text-white"
                                 />
                             </Box> */}
 
                             <Box>
-                                <FormLabel htmlFor='local'>Local</FormLabel>
+                                <FormLabel htmlFor='local' className="dark:text-white">Local</FormLabel>
                                 <Select
                                     disabled={!CPF.validate(documentId)}
                                     placeholder='- Escolha uma local -'
@@ -201,33 +209,32 @@ export default function RegistrarChegada() {
                                     required
                                     id="local"
                                     onChange={(event) => { setPlace(event.target.value) }}
-
+                                    className="dark:bg-gray-700 dark:text-gray-400 dark:border-gray-600"
                                 >
-                                    {places.map((el) => <option key={el[0]} value={el[1]}>{el[1]}</option>)}
+                                    {places.map((el) => <option className="bg-red-500" key={el[0]} value={el[1]}>{el[1]}</option>)}
                                 </Select>
                             </Box>
 
-
-
                             <Box>
-                                <FormLabel htmlFor='obs'>Observação</FormLabel>
+                                <FormLabel htmlFor='obs' className="dark:text-white">Observação</FormLabel>
                                 <Textarea
                                     value={note}
                                     onChange={(event) => { setNote(event.target.value) }}
                                     id='obs'
                                     disabled={!CPF.validate(documentId)}
+                                    className="dark:bg-gray-700 dark:text-white dark:border-gray-600"
                                 />
                             </Box>
 
-                            <Box className="flex items-center justify-center opacity-40 select-none">
+                            <Box className="flex items-center justify-center opacity-40 select-none dark:text-white dark:border-gray-600">
                                 <BiTimeFive className="mr-1" />
                                 <span className="text-right">{moment().format('DD/MM/YYYY - HH:mm[h]')}</span>
                             </Box>
                         </Stack>
                     </DrawerBody>
 
-                    <DrawerFooter borderTopWidth='1px'>
-                        <Button variant='outline' mr={3} onClick={onClose}>
+                    <DrawerFooter borderTopWidth='1px' className="dark:bg-gray-800 dark:text-white dark:border-gray-600">
+                        <Button variant='outline' mr={3} onClick={onClose} className="dark:hover:bg-gray-600 dark:border-gray-600">
                             Cancelar
                         </Button>
                         <Button onClick={e => { registerVisitorArrival(e) }} colorScheme='green'>Salvar</Button>

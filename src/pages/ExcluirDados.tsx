@@ -9,8 +9,11 @@ import { Box, Button, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, Draw
 import { BiUserX } from "react-icons/bi";
 import AsideLinksEmpty from "../components/_parts/AsideLinksEmpty";
 import { PopoverExclueVisit } from "../components/_parts/PopoverExclueVisit";
+import { useDarkMode } from 'usehooks-ts'
 
 export default function ExcluirDados() {
+    const { isDarkMode } = useDarkMode()
+
     const { isOpen, onOpen, onClose } = useDisclosure()
     const firstField = React.useRef() as React.MutableRefObject<HTMLInputElement>;
 
@@ -95,16 +98,18 @@ export default function ExcluirDados() {
                 onClose={onClose}
             >
                 <DrawerOverlay />
-                <DrawerContent>
+                <DrawerContent
+                    className={`${isDarkMode ? 'dark' : 'light'}`}
+                >
                     <DrawerCloseButton />
-                    <DrawerHeader borderBottomWidth='1px'>
+                    <DrawerHeader borderBottomWidth='1px' className="dark:bg-gray-800 dark:text-white dark:border-gray-600">
                         Apagar dados de visitante
                     </DrawerHeader>
 
-                    <DrawerBody>
+                    <DrawerBody className="dark:bg-gray-800">
                         <Stack spacing='24px'>
                             <Box>
-                                <FormLabel htmlFor='nome'>CPF</FormLabel>
+                                <FormLabel htmlFor='nome' className="dark:text-white">CPF</FormLabel>
                                 <Input
                                     required
                                     onBlur={() => { setShowAlertCPF(!isValidCPF()) }}
@@ -116,22 +121,24 @@ export default function ExcluirDados() {
                                     maxLength={11}
                                     onChange={(event) => { setDocumentId(event.target.value.replace(/[^0-9]/, '')) }}
                                     placeholder='00000000000'
+                                    className="dark:bg-gray-700 dark:text-white dark:border-gray-600"
+
                                 />
                             </Box>
 
-                            <span className={`!mt-1 pr-1 text-xs text-right ${showAlertCPF ? 'text-danger' : 'text-white'}`}>CPF inválido</span>
+                            <span className={`!mt-1 pr-1 text-xs text-right ${showAlertCPF ? 'text-danger' : 'text-white dark:text-gray-800'}`}>CPF inválido</span>
 
                             {name ? (
-                                <Box>
+                                <Box className="dark:text-white">
                                     <h1 className="mb-1">Visitante encontrado:</h1>
                                     <span>Nome: </span>
                                     <strong>{name}</strong>
                                 </Box>
                             ) : (
-                                <h1 className="text-center !mb-8">Nenhum visitante cadastrado corresponde ao CPF informado.</h1>
+                                <h1 className="text-center !mb-8 dark:text-white">Nenhum visitante cadastrado corresponde ao CPF informado.</h1>
                             )}
 
-                            <Box className="border border-red-300	 rounded-md py-2 px-4">
+                            <Box className="border border-red-300 dark:text-white rounded-md py-2 px-4">
                                 <h1 className="font-semibold mb-2">Atenção!</h1>
                                 <p>
                                     Ao excluir um usário, não será possível recuperar seus dados posteriormente, entretanto, é possível realizar seu cadastro novamente.
@@ -142,8 +149,8 @@ export default function ExcluirDados() {
                         </Stack>
                     </DrawerBody>
 
-                    <DrawerFooter borderTopWidth='1px'>
-                        <Button variant='outline' mr={3} onClick={onClose}>
+                    <DrawerFooter borderTopWidth='1px' className="dark:bg-gray-800 dark:text-white dark:border-gray-600">
+                        <Button variant='outline' mr={3} onClick={onClose} className="dark:hover:bg-gray-600 dark:border-gray-600">
                             Cancelar
                         </Button>
                         <PopoverExclueVisit

@@ -28,7 +28,7 @@ export function SignIn() {
                 <form className="space-y-6" onSubmit={e => handleSignIn(e)}>
                     <div className='flex justify-center items-center mt-4'>
                         <HiOutlineLockClosed className='inline mr-1' />
-                        <h5 className="text-md font-medium text-text">Login</h5>
+                        <h5 className="text-md font-medium text-text dark:text-white">Login</h5>
                     </div>
                     <div>
                         <InputGroup
@@ -38,7 +38,7 @@ export function SignIn() {
                                 pointerEvents='none'
                                 children={<HiOutlineMail color='gray.300' />}
                             />
-                            <Input type="email" name="email" id="email" placeholder='email@email.com' value={email} onChange={(event) => setEmail(event.target.value)} className="focus:outline-primary-700 focus:border-none text-text" />
+                            <Input type="email" name="email" id="email" placeholder='email@email.com' value={email} onChange={(event) => setEmail(event.target.value)} className="focus:outline-primary-700 focus:border-none text-text dark:text-white" />
                         </InputGroup>
                     </div>
                     <div>
@@ -49,7 +49,7 @@ export function SignIn() {
                                 pointerEvents='none'
                                 children={<HiOutlineKey color='gray.300' />}
                             />
-                            <Input type="password" name="password" id="password" value={password} onChange={(event) => setPassword(event.target.value)} placeholder="••••••••" className="focus:outline-primary-700 focus:border-none text-text bg-slate-50" />
+                            <Input type="password" name="password" id="password" value={password} onChange={(event) => setPassword(event.target.value)} placeholder="••••••••" className="focus:outline-primary-700 focus:border-none text-text dark:text-white bg-slate-50" />
                         </InputGroup>
                     </div>
                     <div className="flex items-start">
