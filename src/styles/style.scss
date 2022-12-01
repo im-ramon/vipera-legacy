@@ -78,7 +78,17 @@ circle {
 }
 
 .dark {
-    .drawerbody {
-        background: red !important;
+    *::-webkit-scrollbar {
+        width: 8px; /* width of the entire scrollbar */
+    }
+
+    *::-webkit-scrollbar-track {
+        background: rgb(26, 35, 48); /* color of the tracking area */
+    }
+
+    *::-webkit-scrollbar-thumb {
+        background-color: rgb(55, 72, 97); /* color of the scroll thumb */
+        border-radius: 8px; /* roundness of the scroll thumb */
+        border: 1px solid #000; /* creates padding around scroll thumb */
     }
 }
