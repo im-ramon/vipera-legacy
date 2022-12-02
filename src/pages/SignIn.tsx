@@ -28,31 +28,42 @@ export function SignIn() {
     }
 
     function handlePasswordReset() {
-        setIsLoading(true)
-        sendPasswordResetEmail(auth, email)
-            .then(() => {
-                toast({
-                    title: 'O link de recuperação foi encaminhado para seu e-mail!',
-                    status: 'success',
-                    duration: 5000,
-                    isClosable: true,
-                })
+        const emailValidator = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
+
+        if (!emailValidator.test(email)) {
+            toast({
+                title: 'Por favor, digite um e-mail válido para continuar.',
+                status: 'warning',
+                duration: 5000,
+                isClosable: true,
             })
-            .catch((error) => {
-                console.log('error.code:', error.code)
-                console.log('error.message:', error.message)
-                toast({
-                    title: 'Nâo foi possível enviar o link de recuperação',
-                    description: 'Tente novamente mais tarde',
-                    status: 'error',
-                    duration: 5000,
-                    isClosable: true,
+        } else {
+            setIsLoading(true)
+            sendPasswordResetEmail(auth, email)
+                .then(() => {
+                    toast({
+                        title: 'O link de recuperação foi encaminhado para seu e-mail!',
+                        status: 'success',
+                        duration: 5000,
+                        isClosable: true,
+                    })
                 })
-            })
-            .finally(() => {
-                setIsLoading(false)
-                onClose()
-            });
+                .catch((error) => {
+                    console.log('error.code:', error.code)
+                    console.log('error.message:', error.message)
+                    toast({
+                        title: 'Não foi possível enviar o link de recuperação',
+                        description: 'Tente novamente mais tarde',
+                        status: 'error',
+                        duration: 5000,
+                        isClosable: true,
+                    })
+                })
+                .finally(() => {
+                    setIsLoading(false)
+                    onClose()
+                });
+        }
     }
 
     return (
@@ -76,7 +87,7 @@ export function SignIn() {
                                 pointerEvents='none'
                                 children={<HiOutlineMail color='gray.300' />}
                             />
-                            <Input type="email" name="email" id="email" placeholder='email@email.com' value={email} onChange={(event) => setEmail(event.target.value)} className="focus:outline-primary-700 focus:border-none text-text dark:text-white" />
+                            <Input type="email" name="email" id="email" placeholder='seuemail@email.com' value={email} onChange={(event) => setEmail(event.target.value)} className="focus:outline-primary-700 focus:border-none text-text dark:text-white" />
                         </InputGroup>
                     </div>
                     <div>
@@ -123,7 +134,7 @@ export function SignIn() {
                                 pointerEvents='none'
                                 children={<HiOutlineMail color='gray.300' />}
                             />
-                            <Input type="email" name="email" id="email" placeholder='email@email.com' value={email} onChange={(event) => setEmail(event.target.value)} className="focus:outline-primary-700 focus:border-none text-text dark:text-white" />
+                            <Input type="email" name="email" id="email" placeholder='seuemail@email.com' value={email} onChange={(event) => setEmail(event.target.value)} className="focus:outline-primary-700 focus:border-none text-text dark:text-white" />
                         </InputGroup>
                     </ModalBody>
 
