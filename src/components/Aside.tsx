@@ -10,11 +10,19 @@ import RegistrarSaida from '../pages/RegistrarSaida';
 import logo from '../assets/images/img/logo.png'
 import ExcluirDados from '../pages/ExcluirDados';
 import { NavLink } from 'react-router-dom';
+import Tilt from './_parts/Tiltt';
+
 
 export default function Aside() {
     const [showAside, setShowAside] = useState<boolean>(true)
 
     const { signOut } = useContext(AuthContext)
+
+    const optionsTilt = {
+        scale: 1.2,
+        speed: 1000,
+        max: 60
+    };
 
     return (
         <aside className={`flex shadow-md flex-col relative transition-all duration-300 bg-white dark:bg-gray-800 dark:text-white h-full ${showAside ? 'w-64 border-r dark:border-r-gray-700' : 'w-0 border-none'}`}>
@@ -22,10 +30,12 @@ export default function Aside() {
                 {showAside ? <AiOutlineClose /> : <AiOutlineMenu />}
             </div>
             <div className="flex items-center justify-center h-14 border-b dark:border-b-gray-700 overflow-hidden">
-                <div className='flex items-center justify-center select-none'>
-                    <Image className='w-9' id='logo' src={logo} alt='Dan Abramov' />
-                    <strong className='font-handwrite text-3xl ml-2 text-gray-600 dark:text-white'>Vipera</strong>
-                </div>
+                <Tilt options={optionsTilt}>
+                    <div className='flex items-center justify-center select-none'>
+                        <Image className='w-9' id='logo' src={logo} alt='Dan Abramov' />
+                        <strong className='font-handwrite text-3xl ml-2 text-gray-600 dark:text-white'>Vipera</strong>
+                    </div>
+                </Tilt>
             </div>
             <div className="overflow-y-auto overflow-x-hidden flex-grow">
                 <ul className="flex flex-col py-4 space-y-1">
