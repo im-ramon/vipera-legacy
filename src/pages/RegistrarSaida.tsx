@@ -100,12 +100,13 @@ export default function RegistrarChegada() {
                                     if (el[1].exit == '') {
                                         return (
                                             <Box key={el[0]} className="dark:text-white">
-                                                <Box className="relative border dark:border-gray-600 py-4 px-4 rounded-md text-sm">
+                                                <Box className="relative border dark:border-gray-600 py-6 px-4 rounded-md text-sm">
                                                     <Box className="absolute top-1 right-1"><PulsePoint size={32} /></Box>
                                                     <p><strong>Nome:</strong> {el[1].name}</p>
                                                     <p><strong>CPF:</strong> {el[1].documentId.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4")}</p>
+                                                    <p><strong>Cargo/ ocupação:</strong> {el[1].occupation || '-'}</p>
                                                     <p><strong>Chegada:</strong> {moment(el[1].entrance).format('DD/MM/YY [às] HH:mm[h]')}</p>
-                                                    <p><strong>Local:</strong> {el[1].place}</p>
+                                                    <p><strong>Destino:</strong> {el[1].place}</p>
                                                     <Divider className="my-3" />
                                                     <Box className="flex justify-end">
                                                         <PopoverCustom

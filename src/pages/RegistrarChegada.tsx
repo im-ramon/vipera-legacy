@@ -3,12 +3,12 @@ import React, { useState, useEffect } from "react";
 import { database } from "../services/firebase";
 import CPF from 'cpf-check';
 import { onValue, ref, set } from "firebase/database";
-import { useToast } from '@chakra-ui/react'
 import ShortUniqueId from "short-unique-id";
 import moment from "moment";
 
 import { BiTimeFive, BiUserPlus } from "react-icons/bi";
-import { Box, Button, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerFooter, DrawerHeader, DrawerOverlay, FormLabel, Input, Stack, Select, Textarea, useDisclosure } from "@chakra-ui/react";
+import { AiOutlineQuestionCircle } from "react-icons/ai";
+import { useToast, Tooltip, Box, Button, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerFooter, DrawerHeader, DrawerOverlay, FormLabel, Input, Stack, Select, Textarea, useDisclosure } from "@chakra-ui/react";
 import AsideLinksEmpty from "../components/_parts/AsideLinksEmpty";
 import { useDarkMode } from 'usehooks-ts'
 
@@ -21,6 +21,7 @@ export default function RegistrarChegada() {
     const [documentId, setDocumentId] = useState<string>('');
     const [name, setName] = useState<string>('');
     const [place, setPlace] = useState<string>('');
+    const [occupation, setOccupation] = useState<string>('');
     const [places, setPlaces] = useState<any[]>([]);
     const [note, setNote] = useState<string>('');
     const [visitorIsHere, setVisitorIsHere] = useState<boolean>(false);
@@ -36,6 +37,7 @@ export default function RegistrarChegada() {
             set(ref(database, 'visitors/' + documentId), {
                 name,
                 note,
+                occupation,
                 isHere: true
             })
 
@@ -44,6 +46,7 @@ export default function RegistrarChegada() {
                 documentId,
                 name,
                 place,
+                occupation,
                 entrance: moment().format(),
                 exit: '',
             }).then(() => {
@@ -74,6 +77,7 @@ export default function RegistrarChegada() {
         setNote('')
         setDocumentId('')
         setPlace('')
+        setOccupation('')
         setVisitorIsHere(false)
     }
 
@@ -84,6 +88,7 @@ export default function RegistrarChegada() {
                 if (data) {
                     setName(data['name'])
                     setNote(data['note'])
+                    setOccupation(data['occupation'])
                     setVisitorIsHere(data['isHere'])
                 }
             })
@@ -156,6 +161,7 @@ export default function RegistrarChegada() {
                             <Box>
                                 <FormLabel htmlFor='nome' className="dark:text-white">CPF</FormLabel>
                                 <Input
+                                    
                                     required
                                     onBlur={() => { setShowAlertCPF(!isValidCPF()) }}
                                     ref={firstField}
@@ -185,26 +191,28 @@ export default function RegistrarChegada() {
                                 />
                             </Box>
 
-                            {/* <Box>
-                                <FormLabel htmlFor='obs'>Data/ hora da chegada</FormLabel>
+                            <Box>
+                                <Tooltip label='Preencha este campo com informações que identifiquem a “origem” do visitante, como: função/ empresa, cargo, profissão, entre outras.' placement='auto-start'>
+                                    <Box className="dark:text-white flex items-center justify-between">
+                                        <FormLabel htmlFor='ocupacao' className="dark:text-white">Cargo/ ocupação </FormLabel><AiOutlineQuestionCircle className="mb-2" />
+                                    </Box>
+                                </Tooltip>
                                 <Input
-                                required
-                                disabled={!CPF.validate(documentId)}
-                                id="chegada"
-                                placeholder="Selecione uma data e horário"
-                                size="md"
-                                value={dateTime}
-                                onChange={(event) => { setDateTime(event.target.value) }}
-                                type="datetime-local"
-                                className="dark:bg-gray-700 dark:text-white"
+                                    disabled={!CPF.validate(documentId)}
+                                    required
+                                    id='ocupacao'
+                                    value={occupation}
+                                    onChange={(event) => { setOccupation(event.target.value) }}
+                                    placeholder=''
+                                    className="dark:bg-gray-700 dark:text-white dark:border-gray-600"
                                 />
-                            </Box> */}
+                            </Box>
 
                             <Box>
-                                <FormLabel htmlFor='local' className="dark:text-white">Local</FormLabel>
+                                <FormLabel htmlFor='destino' className="dark:text-white">Destino</FormLabel>
                                 <Select
                                     disabled={!CPF.validate(documentId)}
-                                    placeholder='- Escolha uma local -'
+                                    placeholder='- Escolha um destino -'
                                     value={place}
                                     required
                                     id="local"

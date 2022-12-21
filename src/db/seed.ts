@@ -29,7 +29,7 @@ function runSeed() {
         'Almox': 'Almox',
         'Rancho': 'Rancho',
         'PMT': 'PMT',
-        'Estação_rádio': 'Estação rádio',
+        'Estacao_rádio': 'Estação rádio',
         'Lojinha': 'Lojinha',
         '1ª_Cia_Fuz': '1ª Cia Fuz',
         '2ª_Cia_Fuz': '2ª Cia Fuz',
