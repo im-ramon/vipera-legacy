@@ -1,14 +1,14 @@
 import React, { useContext, useState } from 'react';
 import { AuthContext } from '../contexts/auth.context';
 
+import { auth } from '@/services/firebase';
+import { Box, Button, Divider, Image, Input, InputGroup, InputLeftElement, InputRightElement, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Text, useDisclosure, useToast } from '@chakra-ui/react';
+import { sendPasswordResetEmail } from 'firebase/auth';
+import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import { HiOutlineKey, HiOutlineLockClosed, HiOutlineMail } from "react-icons/hi";
 import { IoPaperPlaneOutline } from "react-icons/io5";
-import { Box, Image, Input, InputGroup, InputLeftElement, Divider, Button, Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, useDisclosure, Text } from '@chakra-ui/react';
-import logo from '../assets/images/img/logo.png';
 import { useDarkMode } from 'usehooks-ts';
-import { useToast } from '@chakra-ui/react'
-import { sendPasswordResetEmail } from 'firebase/auth';
-import { auth } from '@/services/firebase';
+import logo from '../assets/images/img/logo.png';
 
 
 export function SignIn() {
@@ -21,6 +21,7 @@ export function SignIn() {
     const [email, setEmail] = useState<string>('')
     const [password, setPassword] = useState<string>('')
     const [isLoading, setIsLoading] = useState<boolean>(false)
+    const [showPassword, setShowPassword] = useState<boolean>(true)
 
     function handleSignIn(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault()
@@ -85,7 +86,7 @@ export function SignIn() {
                         >
                             <InputLeftElement
                                 pointerEvents='none'
-                                children={<HiOutlineMail color='gray.300' />}
+                                children={<HiOutlineMail className='text-gray-700 dark:text-white' />}
                             />
                             <Input type="email" name="email" id="email" placeholder='seuemail@email.com' value={email} onChange={(event) => setEmail(event.target.value)} className="focus:outline-primary-700 focus:border-none text-text dark:text-white" />
                         </InputGroup>
@@ -96,9 +97,14 @@ export function SignIn() {
                         >
                             <InputLeftElement
                                 pointerEvents='none'
-                                children={<HiOutlineKey color='gray.300' />}
+                                children={<HiOutlineKey className='text-gray-700 dark:text-white' />}
                             />
-                            <Input type="password" name="password" id="password" value={password} onChange={(event) => setPassword(event.target.value)} placeholder="••••••••" className="focus:outline-primary-700 focus:border-none text-text dark:text-white bg-slate-50" />
+                            <Input type={showPassword ? 'text' : 'password'} name="password" id="password" value={password} onChange={(event) => setPassword(event.target.value)} placeholder="••••••••" className="focus:outline-primary-700 px-0 focus:border-none text-text dark:text-white bg-slate-50" />
+                            <InputRightElement width='4.5rem'>
+                                <span onClick={() => setShowPassword(!showPassword)} className="cursor-pointer">
+                                    {showPassword ? <AiOutlineEyeInvisible className='text-gray-700 dark:text-white translate-x-3' /> : <AiOutlineEye className='text-gray-700 dark:text-white translate-x-3' />}
+                                </span>
+                            </InputRightElement>
                         </InputGroup>
                     </div>
                     <div className="flex items-start">
@@ -118,7 +124,7 @@ export function SignIn() {
                         <a className='font-bold block' href="http://ramonoliveira.dev" target="_blank" rel="noopener noreferrer">ramonoliveira.dev</a>
                     </div>
                 </div>
-            </div>
+            </div >
 
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
@@ -132,7 +138,7 @@ export function SignIn() {
                         >
                             <InputLeftElement
                                 pointerEvents='none'
-                                children={<HiOutlineMail color='gray.300' />}
+                                children={<HiOutlineMail className='text-gray-700 dark:text-white' />}
                             />
                             <Input type="email" name="email" id="email" placeholder='seuemail@email.com' value={email} onChange={(event) => setEmail(event.target.value)} className="focus:outline-primary-700 focus:border-none text-text dark:text-white" />
                         </InputGroup>
